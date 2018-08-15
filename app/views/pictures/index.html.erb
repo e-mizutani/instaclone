@@ -1,0 +1,24 @@
+<h1>投稿一覧</h1>
+
+<div class="container">
+  <div id="new-picture-link">
+    <%= link_to '新規作成する', new_picture_path, class: 'btn btn-default' %>
+  </div>
+
+  <div class="row">
+    <% @pictures.each do |picture| %>
+      <div class="col-xs-12 col-md-6 picture-panel">
+        <h2><%= picture.title %></h2>
+        <% user = User.find_by(id: picture.user_id) %>
+        <p><%=  user.name %></p>
+        <div class="picture-links">
+          <%= link_to '詳細', picture, class: 'btn btn-default' %>
+          <% if logged_in? && picture.user.id == current_user.id %>
+          <%= link_to '編集', edit_picture_path(picture), class: 'btn btn-info' %> 　
+          <%= link_to '削除', picture, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

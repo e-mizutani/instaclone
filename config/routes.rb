@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   resources :contacts
   get 'sessions/new'
 
-  get '/', to:'blogs#index'
-  resources :blogs do
+  get '/', to:'tops#index'
+  resources :pictures do
     collection do
       post :confirm
    end

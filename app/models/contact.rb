@@ -1,4 +1,4 @@
 class Contact < ApplicationRecord
-  belongs_to :blog
+  belongs_to :picture
   belongs_to :user
 end
